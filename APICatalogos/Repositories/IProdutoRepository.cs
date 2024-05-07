@@ -1,14 +1,12 @@
 ﻿using APICatalogos.Models;
 using APICatalogos.Pagination;
+using X.PagedList;
 
 namespace APICatalogos.Repositories;
 
 public interface IProdutoRepository : IRepository<Produto>
 {
-    IEnumerable<Produto> GetProdutosPorCategoria(int id);
-
-    //IEnumerable<Produto> GetProdutos(ProdutosParameters produtosParams);
-    PagedList<Produto> GetProdutos(ProdutosParameters produtosParams);
-
-    PagedList<Produto> GetProdutosFiltroPreco(ProdutosFiltroPreco produtosFiltroParams);
+    Task<IEnumerable<Produto>> GetProdutosPorCategoriaAsync(int id);
+    Task<IPagedList<Produto>> GetProdutosAsync(ProdutosParameters produtosParams);
+    Task<IPagedList<Produto>> GetProdutosFiltroPrecoAsync(ProdutosFiltroPreco produtosFiltroParams);
 }
